@@ -29,7 +29,12 @@ optparse = OptionParser.new do|opts|
     end
 
     opts.on('-l', '--list [date]', 'List memoirb files for given YEAR, YEAR_MONTH') do |date|
-        options = {:list => date}
+        if date
+            options = {:list => date}
+        else
+            puts("No YEAR or YEAR_MONTH given.")
+            exit
+        end
     end
 
     opts.on( '-h', '--help', 'Display this screen' ) do
